@@ -14,7 +14,7 @@ const ideia = require("./models/Ideia");
 // routes
 const ideiasRoutes = require("./routes/ideiasRoutes");
 const authRoutes = require("./routes/authRoutes");
-const ToughController = require("./controllers/ideiaController");
+const ToughController = require("./controllers/IdeiaController");
 
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");

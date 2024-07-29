@@ -3,7 +3,7 @@ const User = require('../models/User')
 
 const { Op } = require('sequelize')
 
-module.exports = class ToughController {
+module.exports = class IdeiaController {
   static async dashboard(req, res) {
     const userId = req.session.userid
 
