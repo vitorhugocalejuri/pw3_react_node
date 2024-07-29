@@ -6,7 +6,7 @@ const ideiaController = require("../controllers/ideiaController");
 const checkAuth = require("../helpers/auth").checkAuth;
 
 router.get("/add", checkAuth, ideiaController.createideia);
-router.post("/add", checkAuth, ideiaController.createideiaSave);
+router.post("/add", checkAuth, ideiaController.createIdeiaSave);
 router.post("/remove", checkAuth, ideiaController.removeideia);
 router.get("/edit/:id", checkAuth, ideiaController.updateideia);
 router.post("/edit", checkAuth, ideiaController.updateideiaPost);

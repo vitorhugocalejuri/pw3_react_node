@@ -1,4 +1,4 @@
-const ideia = require('../models/ideia')
+const Ideia = require('../models/Ideia')
 const User = require('../models/User')
 
 const { Op } = require('sequelize')
@@ -11,11 +11,11 @@ module.exports = class IdeiaController {
       where: {
         id: userId,
       },
-      include: ideia,
+      include: Ideia,
       plain: true,
     })
 
-    const ideias = user.ideias.map((result) => result.dataValues)
+    const ideias = user.ideia.map((result) => result.dataValues)
 
     let emptyideias = true
 
@@ -33,13 +33,13 @@ module.exports = class IdeiaController {
     res.render('ideias/create')
   }
 
-  static createideiaSave(req, res) {
+  static createIdeiaSave(req, res) {
     const ideia = {
       title: req.body.title,
       UserId: req.session.userid,
     }
 
-    ideia.create(ideia)
+    Ideia.create(ideia)
       .then(() => {
         req.flash('message', 'Pensamento criado com sucesso!')
         req.session.save(() => {
@@ -68,7 +68,7 @@ module.exports = class IdeiaController {
       order = 'DESC'
     }
 
-    ideia.findAll({
+    Ideia.findAll({
       include: User,
       where: {
         title: { [Op.like]: `%${search}%` },
