@@ -12,10 +12,22 @@ jobs:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
+      # Checkout the repository
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+
+
+      # Navigate to the project directory, install dependencies, build the project, and copy the 'dist' directory to the root
+      - run: |
+          cd ./minideiablog
+          npm ci
+          npm run build
+          cp -r dist ../
+
+
+      # Deploy to Firebase Hosting
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MINIBLOG_VITORSILVA }}
+          channelId: live
           projectId: miniblog-vitorsilva
