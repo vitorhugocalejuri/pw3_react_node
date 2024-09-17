@@ -3,6 +3,7 @@ import style from './CreatePost.module.css'
 import { useInsertDocument } from '../../hooks/useInsertDocument'
 import { useAuthValue } from '../../context/AuthContext'
 
+
 const CreatePost = () => {
   const [title, setTitle] = useState();
   const [image, setImage] = useState();
