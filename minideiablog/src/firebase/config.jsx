@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
-  apiKey: "AIzaSyCeirq1nt4T1YI_E2Oz7RMZCxdGWGpgl0o",
+   apiKey: "AIzaSyCeirq1nt4T1YI_E2Oz7RMZCxdGWGpgl0o",
   authDomain: "miniblog-vitorsilva.firebaseapp.com",
   projectId: "miniblog-vitorsilva",
   storageBucket: "miniblog-vitorsilva.appspot.com",
