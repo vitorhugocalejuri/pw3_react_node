@@ -10,6 +10,7 @@ import Login from './pages/Login/Login'
 import Home from './pages/Home/Home'
 import CreatePost from './pages/CreatePost/CreatePost'
 import Register from './pages/Register/Register'
+import Post from './pages/Post/Post'
 import loading from '/loading.gif'
 import { useEffect, useState } from 'react'
 
