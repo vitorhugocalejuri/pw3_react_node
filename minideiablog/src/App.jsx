@@ -11,6 +11,10 @@ import Home from './pages/Home/Home'
 import CreatePost from './pages/CreatePost/CreatePost'
 import Register from './pages/Register/Register'
 import Post from './pages/Post/Post'
+import About from './pages/About/About'
+import Search from './pages/Search/Search'
+import EditPost from './pages/EditPost/EditPost'
+import Dashboard from './pages/Dashboard/Dashboard'
 import loading from '/loading.gif'
 import { useEffect, useState } from 'react'
 
@@ -31,22 +35,42 @@ function App() {
   }
   return (
     <>
+    <div className="App">
       <AuthProvider value={{ user }}>
-        <div>
-          <BrowserRouter>
-            <NavBar />
-            <div className='container'>
-              <Routes>
-                <Route path='/' element={<Home />}></Route>
-                <Route path='/login' element={<Login />}></Route>
-                <Route path='/register' element={<Register />}></Route>
-                <Route path='/post/create' element={<CreatePost />}></Route>
-              </Routes>
-            </div>
-            <Footer />
-          </BrowserRouter>
-        </div>
+        <BrowserRouter>
+          <NavBar />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route
+                path="/post/create"
+                element={user ? <CreatePost /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="/post/edit/:id"
+                element={user ? <EditPost /> : <Navigate to="/login" />}
+              />
+              <Route path="/post/:id" element={<Post />} />
+              <Route path="/search" element={<Search />} />
+              <Route
+                path="/login"
+                element={!user ? <Login /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/register"
+                element={!user ? <Register /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/dashboard"
+                element={user ? <Dashboard /> : <Navigate to="/login" />}
+              />
+            </Routes>
+          </div>
+          <Footer />
+        </BrowserRouter>
       </AuthProvider>
+    </div>
     </>
   )
 }
